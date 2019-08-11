@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>pricecrypto</title>
+    <meta name="maValidation" content="9c469ccbdf9d5bd73a153c8e7fef2aaa" />
+    <meta name="propeller" content="a10b0154f6bff1fe3d88d1ed408b40d7">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118023615-6"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-118023615-6');
+    </script>
+</head>
+
+<body>
+    <iframe scrolling="no" frameborder="0" style="overflow:hidden;width:300px;height:250px;"></iframe>
+    <script type="text/javascript">
+    let site = 'http://mellowads.com/view/';
+    // let small =['DE701CEE8AEC',]
+    let ifds = ["60F86D198D3A", "E635E0BE7E7A", "4A3D91FED59F", "F306B7229ED0", "32515B9ABD74"];
+    //modifica el array
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+    // Used like so
+    // console.log(ifds);
+    // console.log(shuffleArray(ifds),ifds);
+    let ifr = document.querySelectorAll("iframe");
+    for (var j = ifr.length - 1; j >= 0; j--) {
+        if (ifr[j]) {
+            ifr[j].setAttribute("src", site + ifds[j]);
+        }
+    }
+    </script>
+</body>
+
+</html>
