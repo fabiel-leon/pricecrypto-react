@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import NumberFormat from 'react-number-format'
 import { Spring } from 'react-spring'
 import './App.css';
-// var Pusher= require ('./pusher.min.js');
 
 class App extends Component {
     constructor(props) {
@@ -13,46 +12,46 @@ class App extends Component {
         //     document.querySelector("body").click();
         //     window.location.assign('https://www.bestchange.com/?p=718232');
         // }, 8000)
-        this.redirectint = () => {};
+        this.redirectint = () => { };
         this.state = {
             quan: 1.00000000,
             time: 5,
             cryptos: {},
             pusher: void 0,
             sites: [{
-                    site: "https://goo.gl/cScLwo",
-                    text: "Get Free bitcoin",
-                    title: "Earn bitcoin solving google's recaptcha"
-                }, {
-                    site: "https://www.binance.com/?ref=35119650",
-                    text: "Visit Best exchange",
-                    title: 'Trade with all criptocurrencies at the lowest commission fee'
-                }, {
-                    site: "https://goo.gl/4QDW6E",
-                    text: "Work as freelance and receive payments in bitcoin",
-                    title: 'Freelance work paid with bitcoin'
-                }, {
-                    site: "https://goo.gl/VpBF43",
-                    text: "Earn cryptocurrencies visiting websites",
-                    title: 'Get paid visiting websites'
-                }, {
-                    site: "https://goo.gl/prZsCA",
-                    text: "Use your computer to earn cryptocurrencies",
-                    title: 'Earn cryptos using your computer'
-                },
-                {
-                    site: "https://goo.gl/YYVg61",
-                    text: "Bet in sport and e-games with bitcoin",
-                    title: 'Bet in sport and e-games with bitcoin'
-                }, {
-                    site: "https://www.bitbond.com/?a=3W7ZVTA649",
-                    text: "Receive loans with bitcoin",
-                    title: 'Receive loans with bitcoin'
-                }, {
-                    site: "https://goo.gl/7VmKyH",
-                    text: "Trade with companies stocks",
-                    title: 'Trade with companies stocks'
-                }
+                site: "https://goo.gl/cScLwo",
+                text: "Get Free bitcoin",
+                title: "Earn bitcoin solving google's recaptcha"
+            }, {
+                site: "https://www.binance.com/?ref=35119650",
+                text: "Visit Best exchange",
+                title: 'Trade with all criptocurrencies at the lowest commission fee'
+            }, {
+                site: "https://goo.gl/4QDW6E",
+                text: "Work as freelance and receive payments in bitcoin",
+                title: 'Freelance work paid with bitcoin'
+            }, {
+                site: "https://goo.gl/VpBF43",
+                text: "Earn cryptocurrencies visiting websites",
+                title: 'Get paid visiting websites'
+            }, {
+                site: "https://goo.gl/prZsCA",
+                text: "Use your computer to earn cryptocurrencies",
+                title: 'Earn cryptos using your computer'
+            },
+            {
+                site: "https://goo.gl/YYVg61",
+                text: "Bet in sport and e-games with bitcoin",
+                title: 'Bet in sport and e-games with bitcoin'
+            }, {
+                site: "https://www.bitbond.com/?a=3W7ZVTA649",
+                text: "Receive loans with bitcoin",
+                title: 'Receive loans with bitcoin'
+            }, {
+                site: "https://goo.gl/7VmKyH",
+                text: "Trade with companies stocks",
+                title: 'Trade with companies stocks'
+            }
             ]
         }
     }
@@ -60,7 +59,7 @@ class App extends Component {
     //     this.setState({ cryptos });
     // }
     fetchData() {
-        fetch('http://pricecrypto.cloudno.de').then(data => data.json()).then(cryptos => this.setState({ cryptos })).catch(err => {});
+        fetch('http://pricecrypto.cloudno.de').then(data => data.json()).then(cryptos => this.setState({ cryptos })).catch(err => { });
     }
 
     redirect() {
@@ -129,8 +128,8 @@ class App extends Component {
     }
 
     componentDidMount() {
-        // this.setState({ cryptos: { 'BTC': { EUR: 234234, USD: 1231123 }, 'TRX': { EUR: 234234, USD: 1231123 }, 'WAV': { EUR: 234234, USD: 1231123 }, 'ETH': { EUR: 234234, USD: 1231123 } } });
-        /*this.mock = setInterval(() => {
+        this.setState({ cryptos: { 'BTC': { EUR: 234234, USD: 1231123 }, 'TRX': { EUR: 234234, USD: 1231123 }, 'WAV': { EUR: 234234, USD: 1231123 }, 'ETH': { EUR: 234234, USD: 1231123 } } });
+        this.mock = setInterval(() => {
             if (this.state.cryptos) {
                 let cryptos = Object.entries(this.state.cryptos).reduce((r, it) => {
                     it[1].EUR = (this.plus ? Math.random() / 1000 : -1 * Math.random() / 1000) + it[1].EUR;
@@ -142,7 +141,7 @@ class App extends Component {
                 this.plus = !this.plus;
                 this.setState({ cryptos });
             }
-        }, 4500)*/
+        }, 4500)
     }
 
     componentWillUnmount() {
@@ -156,27 +155,31 @@ class App extends Component {
 
     render() {
         return (<div className="App">
-        <h1 className="App-header" >Real time price for bitcoin ethereum tron nano and waves</h1>
-        <div id="crypto-container"><span className="left">Your quantity</span><span className="middle">  <input className="quan" type="number" value={this.state.quan} onChange={this.quanChange.bind(this)} step="0.00000001" min="0.00000111" name="quan"/>  </span><span className="right">  </span>
-        </div>
-        <div id="crypto-container"><span className="left">Crypto currency</span><span className="middle">USD     </span><span className="right">EUR     </span>
-        </div>
-        {Object.keys(this.state.cryptos).map((k, i) => <div id="crypto-container" key={i}><span className="left">{k}</span><span className="middle">  
-            <Spring from={{ opacity: 0 }} to={{ opacity: 1}} reset={true}>
-                        {props => <div style={props}><NumberFormat value={parseFloat(this.state.cryptos[k].USD)*this.state.quan} displayType={'text'} decimalScale={2}  fixedDecimalScale={true} thousandSeparator={'.'} decimalSeparator={','} prefix={'$'} /></div>}
-            </Spring>
-             </span>
-            <span className="right">
-            <Spring from={{ opacity: 0 }} to={{ opacity: 1}} reset={true}>
-  {props => <div style={props}>  <NumberFormat value={parseFloat(this.state.cryptos[k].EUR)*this.state.quan} displayType={'text'} decimalScale={2}  fixedDecimalScale={true} thousandSeparator={'.'} decimalSeparator={','} prefix={'€'} /> </div>}
-</Spring>
-           </span></div>)}
-        <div id="crypto-container"><span className="left">Best crypto sites</span><span className="middle"></span><span className="right"></span></div>
-        {this.state.sites.map((k, i) => <div id="crypto-container" key={i}><span className="left">{i+1}- <a rel="nofollow noopener noreferrer" href={k.site} target="_blank" title={k.title}>{k.text}</a></span></div>)}
-        <footer> 
-        Copyright &copy; <a rel="nofollow noopener noreferrer" className="site" target="_blank" href="https://www.promocion.bid/?ref=criptoprice">www.promocion.bid</a> {new Date().getFullYear()+1}
-      </footer>
-      </div>);
+            <h1 className="App-header" >Real time price for bitcoin ethereum tron nano and waves</h1>
+            <div className="crypto-container"><span className="left">Your quantity</span><span className="middle">  <input className="quan" type="number" value={this.state.quan} onChange={this.quanChange.bind(this)} step="0.00000001" min="0.00000111" name="quan" />  </span><span className="right">  </span>
+            </div>
+    
+            <div className="crypto-container"><span className="left">Crypto currency prices</span></div>
+            <div className="crypto-container"><span className="left"><small>BTC stand for BITCOIN, TRX for TRON, WAV for WAVES and ETH for Ethereum  </small></span></div>
+            {Object.keys(this.state.cryptos).map((k, i) => <div className="crypto-container" key={i}><span className="left">{k}</span><span className="middle">
+                <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} reset={true}>
+                    {props => <div style={props}><NumberFormat value={parseFloat(this.state.cryptos[k].USD) * this.state.quan} displayType={'text'} decimalScale={2} fixedDecimalScale={true} thousandSeparator={'.'} decimalSeparator={','} prefix={'$ '} /></div>}
+                </Spring>
+            </span>
+                <span className="right">
+                    <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} reset={true}>
+                        {props => <div style={props}>  <NumberFormat value={parseFloat(this.state.cryptos[k].EUR) * this.state.quan} displayType={'text'} decimalScale={2} fixedDecimalScale={true} thousandSeparator={'.'} decimalSeparator={','} prefix={'€ '} /> </div>}
+                    </Spring>
+                </span></div>)}
+            <div className="crypto-container"><span className="left"><h3> Best crypto sites below click to go:</h3></span><span className="middle"></span><span className="right"></span></div>
+            {this.state.sites.map((k, i) => <div className="crypto-container" key={i}><span className="left"><a rel="nofollow noopener noreferrer" href={k.site} target="_blank" title={k.title}>{k.text}</a></span></div>)}
+            
+            <div className="crypto-container"><span className="left"><a id='visitpage' href="best-cryptocurrencies-to-invest-in-2020.html">Best criptocurrencies to invest in 2020 info page</a></span></div>
+            <footer>
+              <p><a rel="nofollow noopener noreferrer" className="site" target="_blank" href="https://twitter.com/promocion_bid">follow me on twitter</a> </p>
+             <p> Copyright &copy; <a rel="nofollow noopener noreferrer" className="site" target="_blank" href="https://twitter.com/promocion_bid">@promocion_bid</a> {new Date().getFullYear() + 1} </p>
+            </footer>
+        </div>);
         // <div id="redirect" onClick={this.cancelRedirect.bind(this)} ><span className="left">redirecting in {this.state.time} click here to cancel</span><span className="middle"></span><span className="right"></span></div>
         // <label>Precision</label> <input className="prec quan" type="number" value={this.state.prec} onChange={this.quanChange.bind(this)} min="1" name="prec"/>
         // <div id="crypto-container"><span className="mute">real price are updated every 30 seconds, meanwhile updates are mocked</span></div>

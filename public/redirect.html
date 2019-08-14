@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <meta name="maValidation" content="8f309b64bea35ee606105e293d584b61" />
+    <meta name="keywords" content="redirection page">
+    <meta name="description" content="redirection page">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/png" href="/fav.png" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118023615-6"></script>
+    <script async src="https://mellowads.com/pop.js?ref=7F4D3D190719"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-118023615-6');
+        if (window.URLSearchParams) {
+            var params = new URLSearchParams(location.search);
+            var title = params.get('title');
+            document.title = title;
+            var site = params.get('url')
+            window.onload = () => {
+                var at = document.querySelector("#art-title")
+                at.innerHTML = title;
+                var vs = document.querySelector("#visit-site")
+                vs.setAttribute('href', site)
+            }
+        } else {
+            alert("Update your browser to see this content.")
+        }
+    </script>
+    <title>Redirecting to article.</title>
+    <style type="text/css">
+        body {
+            background: #f1f1f1;
+            margin: 10px;
+        }
+
+        div#crypto-container,
+        h1,
+        footer {
+            background: white;
+            width: 80%;
+            margin: 0 auto 4px auto;
+            padding: 2em;
+            box-shadow: 1px 1px 0 lightgrey;
+            border-radius: 5px;
+        }
+
+        div#crypto-container {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 17px;
+        }
+
+        a {
+            text-decoration: none;
+            color: tomato;
+            font-weight: bold;
+            text-shadow: none;
+            padding: 10px;
+            background-color: whitesmoke;
+            border-radius: 5px;
+            box-shadow: 1px 1px 0px 0px #9c9c9c;
+            cursor: default;
+        }
+
+        p {
+            padding: 10px;
+        }
+
+        h2 {
+            font-family: serif;
+            font-style: italic;
+        }
+
+        a:active {
+            box-shadow: -1px -1px 1px 1px #9c9c9c;
+        }
+
+        @media (min-device-width:990px) {
+            .short-frame {
+                display: none;
+            }
+        }
+
+        @media (max-device-width:989px) {
+            .large-frame {
+                display: none;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <iframe class="large-frame" scrolling="no" frameborder="0" src="https://mellowads.com/view/B4BE53879E4B"
+            style="overflow:hidden;width:970px;height:90px;"></iframe>
+        <iframe class="short-frame" scrolling="no" frameborder="0" src="https://mellowads.com/view/60F86D198D3A"
+            style="overflow:hidden;width:300px;height:250px;"></iframe>
+    </div>
+    <div id="crypto-container">
+        <h2 id="art-title"></h2>
+        <p>
+            <a id="visit-site" target="_blank">Click to Read Article</a>
+        </p>
+        <p>
+            <a href="/">Go to Start</a>
+        </p>
+    </div>
+    <div style="text-align: center;">
+    </div>
+</body>
+
+</html>

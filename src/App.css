@@ -1,11 +1,28 @@
-body { background: #f1f1f1; padding: 50px;}
-div#crypto-container,div#redirect,h1,footer{ background: white; width: 80%;margin: 0 auto 4px auto;padding: 1em; box-shadow:1px 1px 0 lightgrey;   border-radius: 5px;}
+body { background: #f1f1f1; margin: 10px;}
+div.App{
+    max-width: 600px;
+    margin: auto;
+}
+div.crypto-container,div#redirect,h1,footer{ 
+    background: white; width: 80%;margin: 0 auto 4px auto;padding: 1em; box-shadow:1px 1px 0 lightgrey;   border-radius: 5px;}
 span.left{font-weight: bold;}
 span.right{float: right;}
 span.middle{float: right; padding-left: 20px; }
 h1 { font-size: 17px; }
+h3{ font-family: sans-serif; font-weight: bold; margin: 0px;}
 footer{ font-weight: bold; color: white; text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15); }
 span.mute{ color: lightgrey; font-size: .75em;  }
-a.site{ text-shadow: none;}
+a{ text-decoration: none; cursor: crosshair; color: tomato; display: block; font-style: italic; font-weight: bold; font-size: 20px}
+a.site{ text-shadow: none;display: inline;}
 input.quan{ padding: 2px;border-radius: 5px;  }
 input.prec{ width: 20%; }
+small {
+    font-weight: normal;
+    font-size: 10px;
+}
+@media (max-device-width:400px) {
+    span{
+       float: unset !important;
+       padding-left: 0px !important;
+    }
+}
