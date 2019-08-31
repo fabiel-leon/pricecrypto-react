@@ -11,7 +11,7 @@
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" type="image/png" href="/fav.png" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118023615-6"></script>
-    <script async src="https://mellowads.com/pop.js?ref=7F4D3D190719"></script>
+    <!-- <script async src="https://mellowads.com/pop.js?ref=7F4D3D190719"></script> -->
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -23,10 +23,14 @@
             document.title = title;
             var site = params.get('url')
             window.onload = () => {
-                var at = document.querySelector("#art-title")
-                at.innerHTML = title;
-                var vs = document.querySelector("#visit-site")
-                vs.setAttribute('href', site)
+            }
+            window.document.onreadystatechange = (evt) => {
+                if (document.readyState == "complete") {
+                    document.querySelector("#art-title").innerHTML = title|| "Pricecrypto";
+                    document.querySelector("#visit-site").setAttribute('href', site)
+                    document.querySelector("#large-frame").setAttribute('src', "https://mellowads.com/view/B4BE53879E4B")
+                    document.querySelector("#short-frame").setAttribute('src', "https://mellowads.com/view/60F86D198D3A")
+                }
             }
         } else {
             alert("Update your browser to see this content.")
@@ -45,7 +49,7 @@
             background: white;
             width: 80%;
             margin: 0 auto 4px auto;
-            padding: 2em;
+            padding: 5px;
             box-shadow: 1px 1px 0 lightgrey;
             border-radius: 5px;
         }
@@ -71,10 +75,11 @@
         }
 
         p {
-            padding: 10px;
+            padding: 5px;
         }
 
         h2 {
+            margin: auto;
             font-family: serif;
             font-style: italic;
         }
@@ -99,12 +104,7 @@
 </head>
 
 <body>
-    <div style="text-align: center;">
-        <iframe class="large-frame" scrolling="no" frameborder="0" src="https://mellowads.com/view/B4BE53879E4B"
-            style="overflow:hidden;width:970px;height:90px;"></iframe>
-        <iframe class="short-frame" scrolling="no" frameborder="0" src="https://mellowads.com/view/60F86D198D3A"
-            style="overflow:hidden;width:300px;height:250px;"></iframe>
-    </div>
+   
     <div id="crypto-container">
         <h2 id="art-title"></h2>
         <p>
@@ -113,6 +113,12 @@
         <p>
             <a href="/">Go to Start</a>
         </p>
+    </div>
+    <div style="text-align: center;">
+        <iframe async class="large-frame" id="large-frame" scrolling="no" frameborder="0"
+            style="overflow:hidden;width:970px;height:90px;"></iframe>
+        <iframe async class="short-frame" id="short-frame" scrolling="no" frameborder="0"
+            style="overflow:hidden;width:300px;height:250px;"></iframe>
     </div>
     <div style="text-align: center;">
     </div>
