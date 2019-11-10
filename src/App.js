@@ -128,20 +128,20 @@ class App extends Component {
     }
 
     componentDidMount() {
-        this.setState({ cryptos: { 'BTC': { EUR: 234234, USD: 1231123 }, 'TRX': { EUR: 234234, USD: 1231123 }, 'WAV': { EUR: 234234, USD: 1231123 }, 'ETH': { EUR: 234234, USD: 1231123 } } });
-        this.mock = setInterval(() => {
-            if (this.state.cryptos) {
-                let cryptos = Object.entries(this.state.cryptos).reduce((r, it) => {
-                    it[1].EUR = (this.plus ? Math.random() / 1000 : -1 * Math.random() / 1000) + it[1].EUR;
-                    it[1].USD = (this.plus ? Math.random() / 1000 : -1 * Math.random() / 1000) + it[1].USD;
-                    r[it[0]] = it[1];
-                    // console.log  (this.plus ? Math.random() / 10 : -1 * Math.random() / 10,this.plus,it[1].EUR)
-                    return r;
-                }, {});
-                this.plus = !this.plus;
-                this.setState({ cryptos });
-            }
-        }, 4500)
+        // this.setState({ cryptos: { 'BTC': { EUR: 234234, USD: 1231123 }, 'TRX': { EUR: 234234, USD: 1231123 }, 'WAV': { EUR: 234234, USD: 1231123 }, 'ETH': { EUR: 234234, USD: 1231123 } } });
+        // this.mock = setInterval(() => {
+        //     if (this.state.cryptos) {
+        //         let cryptos = Object.entries(this.state.cryptos).reduce((r, it) => {
+        //             it[1].EUR = (this.plus ? Math.random() / 1000 : -1 * Math.random() / 1000) + it[1].EUR;
+        //             it[1].USD = (this.plus ? Math.random() / 1000 : -1 * Math.random() / 1000) + it[1].USD;
+        //             r[it[0]] = it[1];
+        //             // console.log  (this.plus ? Math.random() / 10 : -1 * Math.random() / 10,this.plus,it[1].EUR)
+        //             return r;
+        //         }, {});
+        //         this.plus = !this.plus;
+        //         this.setState({ cryptos });
+        //     }
+        // }, 4500)
     }
 
     componentWillUnmount() {

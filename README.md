@@ -1,5 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### way of making money
+
+The way of making money is trought ads , explicity mellowads ads
+Visiting  `/redirect.html?title=<title>&url=<url>` will display an ad who will give money for visiting and will give the posibility to user to open news site, use this project in conjunction with rss-rewriter to load news from other site and generate an url to this project domain.
+
 ## Available Scripts
 
 In the project directory, you can run:
