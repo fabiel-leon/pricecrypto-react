@@ -9,16 +9,16 @@
     <meta name="propeller" content="22280c4cf66af91af3759243bdb8b867">
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" type="image/png" href="/fav.png" />
-    
+
     <!-- Seo friendly -->
     <meta name="robots" content="index, follow" />
     <meta name="googlebot" content="index, follow" />
-    
+
     <meta property="og:type" content="article" />
     <meta property="og:title" content="" />
     <meta property="og:image" content="" />
     <meta property="og:locale" content="es_ES" />
-    
+
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
     <link rel="apple-touch-icon" href="fav.png" />
@@ -29,6 +29,7 @@
     <meta name="mobile-web-app-status-bar-style" content="black" />
     <!-- seo end -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118023615-6"></script>
+    <script async src="//mellowads.com/pop.js?ref=01013E8B4AAB"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -55,6 +56,7 @@
                     document.querySelector("#visit-site").setAttribute('href', site)
                     // document.querySelector("#large-frame").setAttribute('src', "https://mellowads.com/view/B4BE53879E4B")
                     // document.querySelector("#short-frame").setAttribute('src', "https://mellowads.com/view/60F86D198D3A")
+                    fetch('https://pricecrypto.cloudno.de').then(data => data.json()).then(cryptos => this.setState({ cryptos })).catch(err => { });
                 }
             }
         } else {
