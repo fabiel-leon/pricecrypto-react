@@ -29,12 +29,12 @@
     <meta name="mobile-web-app-status-bar-style" content="black" />
     <!-- seo end -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118023615-6"></script>
-    <script src="https://propu.sh/pfe/current/tag.min.js?z=3122317" data-cfasync="false" async></script>
     <!-- push notifications -->
-    <script type="text/javascript" src="//onemboaran.com/apu.php?zoneid=3122319" async data-cfasync="false"></script>
+    <script src="https://propu.sh/pfe/current/tag.min.js?z=3122317" data-cfasync="false" async></script>
     <!-- popunder -->
     <script async src="//mellowads.com/pop.js?ref=01013E8B4AAB"></script>
-    <script type="text/javascript" src="//onemboaran.com/apu.php?zoneid=3122321" async data-cfasync="false"></script>
+    <!-- <script type="text/javascript" src="//onemboaran.com/apu.php?zoneid=3122319" async data-cfasync="false"></script> -->
+
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -58,10 +58,38 @@
             window.document.onreadystatechange = (evt) => {
                 if (document.readyState == "complete") {
                     document.querySelector("#art-title").innerHTML = title || "Pricecrypto";
-                    document.querySelector("#visit-site").setAttribute('href', site)
                     // document.querySelector("#large-frame").setAttribute('src', "https://mellowads.com/view/B4BE53879E4B")
                     // document.querySelector("#short-frame").setAttribute('src', "https://mellowads.com/view/60F86D198D3A")
-                    fetch('https://pricecrypto.cloudno.de').then(data => data.json()).then(cryptos => this.setState({ cryptos })).catch(err => { });
+                    try {
+                        var img = document.createElement('img')
+                        img.src = image_url
+                        img.alt = title
+                        img.style.display = 'block'
+                        img.style.margin = 'auto'
+                        img.style.padding = '20px'
+                        var theParent = document.querySelector('#parent')
+                        theParent.appendChild(img);
+                    } catch (error) {
+                        console.log('error', error)
+                    }
+                    var time = 15;
+                    var inter = setInterval(function () {
+                        time--;
+                        document.querySelector("#time").textContent = time
+                        if (time === 0) {
+                            var lcont = document.querySelector("#link-container")
+                            var link = document.createElement('a')
+                            link.setAttribute('href', site)
+                            link.setAttribute('target', '_blank')
+                            link.classList.add('button')
+                            link.innerText = 'Click to Read Article'
+                            document.querySelector("#btime").remove()
+                            lcont.removeChild(lcont.firstChild)
+                            lcont.appendChild(link)
+                            clearInterval(inter)
+                        }
+                    }, 1000)
+                    // fetch('https://pricecrypto.cloudno.de').then(data => data.json()).then(cryptos => this.setState({ cryptos })).catch(err => { });
                 }
             }
         } else {
@@ -93,8 +121,12 @@
         h1 {
             font-size: 17px;
         }
-
-        a {
+        img {
+            max-width: 75%;
+            max-height: 75%;
+        }
+        a.button,
+        button {
             text-decoration: none;
             color: tomato;
             font-weight: bold;
@@ -140,11 +172,20 @@
         <article>
             <div id="crypto-container">
                 <h2 id="art-title"></h2>
-                <p>
-                    <a id="visit-site" target="_blank">Click to Read Article</a>
+                <p id="link-container">
+                    <button disabled id="btime">Loading article in <span id="time">15</span> segs</button>
                 </p>
+                <aside>
+                    <a href="http://onemboaran.com/afu.php?zoneid=3122339" target="_blank" rel="sponsored"
+                        id="parent"></a>
+
+                    <a href="https://publishers.propellerads.com/#/pub/auth/signUp?ref_id=Tm5d" target="_blank"
+                        rel="sponsored"><img
+                            src="http://promo.propellerads.com/300x250-propellerads-monetize-traffic.gif"
+                            alt="PropellerAds Referral program"></a>
+                </aside>
                 <p>
-                    <a href="/">Go to Start</a>
+                    <a class="button" href="/">Go to Start</a>
                 </p>
             </div>
             <aside>
