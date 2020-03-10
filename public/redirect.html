@@ -40,6 +40,37 @@
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'UA-118023615-6');
+
+        (function (exports) {
+            var cookie = {};
+            cookie.set = function set(name, val, opt) {
+                opt = opt || {};
+                var encodedVal = encodeURIComponent(val), expires = opt.expires ? opt.expires.toUTCString() : opt.duration ? new Date(Date.now() + opt.duration * 1000).toUTCString() : null;
+                var cook = name + '=' + encodedVal + ';';
+                if (expires)
+                    cook += 'expires=' + expires;
+                if (opt.path)
+                    cook += 'path=' + opt.path;
+                document.cookie = cook;
+            };
+            cookie.del = function (name) {
+                document.cookie = name + '=deleted; expires=' + new Date(Date.now() - 1).toUTCString();
+            };
+            cookie.get = function get(name) {
+                var cookies = {};
+                var all = document.cookie.split(';').forEach(function (cs) {
+                    var c = cs.split('=');
+                    if (c[1])
+                        cookies[c[0].trim()] = (decodeURIComponent(c[1]));
+                });
+                if (name)
+                    return cookies[name];
+                else
+                    return cookies;
+            };
+            exports.cookie = cookie;
+        }(typeof (exports) !== 'undefined' ? exports : this));
+
         if (window.URLSearchParams) {
             var params = new URLSearchParams(location.search);
             var title = params.get('title');
@@ -53,6 +84,17 @@
             if (image_url && og_image) { og_image.setAttribute('content', image_url) }
 
             window.onload = () => {
+            }
+            var loadLink = function () {
+                var lcont = document.querySelector("#link-container")
+                var link = document.createElement('a')
+                link.setAttribute('href', site)
+                link.setAttribute('target', '_blank')
+                link.classList.add('button')
+                link.innerText = 'Click to Read Article'
+                document.querySelector("#btime").remove()
+                lcont.removeChild(lcont.firstChild)
+                lcont.appendChild(link)
             }
 
             window.document.onreadystatechange = (evt) => {
@@ -72,23 +114,22 @@
                     } catch (error) {
                         console.log('error', error)
                     }
-                    var time = 15;
-                    var inter = setInterval(function () {
-                        time--;
-                        document.querySelector("#time").textContent = time
-                        if (time === 0) {
-                            var lcont = document.querySelector("#link-container")
-                            var link = document.createElement('a')
-                            link.setAttribute('href', site)
-                            link.setAttribute('target', '_blank')
-                            link.classList.add('button')
-                            link.innerText = 'Click to Read Article'
-                            document.querySelector("#btime").remove()
-                            lcont.removeChild(lcont.firstChild)
-                            lcont.appendChild(link)
-                            clearInterval(inter)
-                        }
-                    }, 1000)
+
+                    if (cookie.get('load')) {
+                        cookie.del('load')
+                        loadLink()
+                    } else {
+                        var time = 15;
+                        var inter = setInterval(function () {
+                            time--;
+                            document.querySelector("#time").textContent = time
+                            if (time === 0) {
+                                loadLink()
+                                cookie.set('load',true)
+                                clearInterval(inter)
+                            }
+                        }, 1000)
+                    }
                     // fetch('https://pricecrypto.cloudno.de').then(data => data.json()).then(cryptos => this.setState({ cryptos })).catch(err => { });
                 }
             }
@@ -121,10 +162,12 @@
         h1 {
             font-size: 17px;
         }
+
         img {
             max-width: 75%;
             max-height: 75%;
         }
+
         a.button,
         button {
             text-decoration: none;
@@ -179,10 +222,11 @@
                     <a href="https://onemboaran.com/afu.php?zoneid=3122339" target="_blank" rel="sponsored"
                         id="parent"></a>
 
-                    <a href="https://publishers.propellerads.com/#/pub/auth/signUp?ref_id=Tm5d" target="_blank"
-                        rel="sponsored"><img
-                            src="https://promo.propellerads.com/300x250-propellerads-monetize-traffic.gif"
-                            alt="PropellerAds Referral program"></a>
+                    <a href="https://s.click.aliexpress.com/e/_d7CkSjv" target="_blank" rel="sponsored"><img
+                            src="//ae01.alicdn.com/kf/H31f14409ba6a440da40e87ee44770a84y/NO-COFFEE-NO-WORKEE-T-Shirt-PIKACHU-POKEMON-pika-Tshirt-O-Neck-Short-Funny-Mens-Shirts.jpg_220x220.jpg" /><span
+                            style="display:block;">AliExpress.com Product - NO COFFEE NO WORKEE T Shirt PIKACHU
+                            POKEMON-pika Tshirt O-Neck Short Funny Mens Shirts T Shirts Pokemon-pikachu Men Tops
+                            Tees</span></a>
                 </aside>
                 <p>
                     <a class="button" href="/">Go to Start</a>
