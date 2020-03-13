@@ -7,6 +7,7 @@
     <meta name="theme-color" content="#000000">
     <meta name="maValidation" content="9728808218a4b0ae4aa2676920e19f28" />
     <meta name="propeller" content="22280c4cf66af91af3759243bdb8b867">
+    <meta name="coinzilla" content="e42b162217d6c5702c3b4d65f18f9ca8" />
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" type="image/png" href="/fav.png" />
 
@@ -29,47 +30,12 @@
     <meta name="mobile-web-app-status-bar-style" content="black" />
     <!-- seo end -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118023615-6"></script>
-    <!-- push notifications -->
-    <script src="https://propu.sh/pfe/current/tag.min.js?z=3122317" data-cfasync="false" async></script>
-    <!-- popunder -->
-    <script async src="//mellowads.com/pop.js?ref=01013E8B4AAB"></script>
-    <!-- <script type="text/javascript" src="//onemboaran.com/apu.php?zoneid=3122319" async data-cfasync="false"></script> -->
 
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'UA-118023615-6');
-
-        (function (exports) {
-            var cookie = {};
-            cookie.set = function set(name, val, opt) {
-                opt = opt || {};
-                var encodedVal = encodeURIComponent(val), expires = opt.expires ? opt.expires.toUTCString() : opt.duration ? new Date(Date.now() + opt.duration * 1000).toUTCString() : null;
-                var cook = name + '=' + encodedVal + ';';
-                if (expires)
-                    cook += 'expires=' + expires;
-                if (opt.path)
-                    cook += 'path=' + opt.path;
-                document.cookie = cook;
-            };
-            cookie.del = function (name) {
-                document.cookie = name + '=deleted; expires=' + new Date(Date.now() - 1).toUTCString();
-            };
-            cookie.get = function get(name) {
-                var cookies = {};
-                var all = document.cookie.split(';').forEach(function (cs) {
-                    var c = cs.split('=');
-                    if (c[1])
-                        cookies[c[0].trim()] = (decodeURIComponent(c[1]));
-                });
-                if (name)
-                    return cookies[name];
-                else
-                    return cookies;
-            };
-            exports.cookie = cookie;
-        }(typeof (exports) !== 'undefined' ? exports : this));
 
         if (window.URLSearchParams) {
             var params = new URLSearchParams(location.search);
@@ -100,8 +66,7 @@
             window.document.onreadystatechange = (evt) => {
                 if (document.readyState == "complete") {
                     document.querySelector("#art-title").innerHTML = title || "Pricecrypto";
-                    // document.querySelector("#large-frame").setAttribute('src', "https://mellowads.com/view/B4BE53879E4B")
-                    // document.querySelector("#short-frame").setAttribute('src', "https://mellowads.com/view/60F86D198D3A")
+                    document.querySelector("#btime").innerHTML = 'Loading article in <span id="time">...</span> segs'
                     try {
                         var img = document.createElement('img')
                         img.src = image_url
@@ -115,21 +80,15 @@
                         console.log('error', error)
                     }
 
-                    if (cookie.get('load')) {
-                        cookie.del('load')
-                        loadLink()
-                    } else {
-                        var time = 15;
-                        var inter = setInterval(function () {
-                            time--;
-                            document.querySelector("#time").textContent = time
-                            if (time === 0) {
-                                loadLink()
-                                cookie.set('load',true)
-                                clearInterval(inter)
-                            }
-                        }, 1000)
-                    }
+                    var time = 15;
+                    var inter = setInterval(function () {
+                        time--;
+                        document.querySelector("#time").textContent = time
+                        if (time === 0) {
+                            loadLink()
+                            clearInterval(inter)
+                        }
+                    }, 1000)
                     // fetch('https://pricecrypto.cloudno.de').then(data => data.json()).then(cryptos => this.setState({ cryptos })).catch(err => { });
                 }
             }
@@ -216,7 +175,7 @@
             <div id="crypto-container">
                 <h2 id="art-title"></h2>
                 <p id="link-container">
-                    <button disabled id="btime">Loading article in <span id="time">15</span> segs</button>
+                    <button disabled id="btime">Loading ...</button>
                 </p>
                 <aside>
                     <a href="https://onemboaran.com/afu.php?zoneid=3122339" target="_blank" rel="sponsored"
