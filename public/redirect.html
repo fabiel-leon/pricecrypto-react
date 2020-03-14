@@ -30,6 +30,7 @@
     <meta name="mobile-web-app-status-bar-style" content="black" />
     <!-- seo end -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118023615-6"></script>
+    <script type="text/javascript" src="https://fandmo.com/main.js" async></script>
 
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -69,13 +70,19 @@
                     document.querySelector("#btime").innerHTML = 'Loading article in <span id="time">...</span> segs'
                     try {
                         var img = document.createElement('img')
-                        img.src = image_url
+                        img.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=="
                         img.alt = title
                         img.style.display = 'block'
                         img.style.margin = 'auto'
                         img.style.padding = '20px'
+                        img.onload = function () {
+                            if (img.src != image_url) {
+                                img.src = image_url;
+                            }
+                        }
                         var theParent = document.querySelector('#parent')
                         theParent.appendChild(img);
+
                     } catch (error) {
                         console.log('error', error)
                     }
@@ -173,7 +180,7 @@
     <main>
         <article>
             <div id="crypto-container">
-                <h2 id="art-title"></h2>
+                <h1 id="art-title"></h1>
                 <p id="link-container">
                     <button disabled id="btime">Loading ...</button>
                 </p>
@@ -181,11 +188,16 @@
                     <a href="https://onemboaran.com/afu.php?zoneid=3122339" target="_blank" rel="sponsored"
                         id="parent"></a>
 
+                    <iframe data-aa="1343089" src="//acceptable.a-ads.com/1343089" scrolling="no"
+                        style="border:0px; padding:0; width:100%; height:100%; overflow:hidden"
+                        allowtransparency="true"></iframe>
                     <a href="https://s.click.aliexpress.com/e/_d7CkSjv" target="_blank" rel="sponsored"><img
                             src="//ae01.alicdn.com/kf/H31f14409ba6a440da40e87ee44770a84y/NO-COFFEE-NO-WORKEE-T-Shirt-PIKACHU-POKEMON-pika-Tshirt-O-Neck-Short-Funny-Mens-Shirts.jpg_220x220.jpg" /><span
                             style="display:block;">AliExpress.com Product - NO COFFEE NO WORKEE T Shirt PIKACHU
                             POKEMON-pika Tshirt O-Neck Short Funny Mens Shirts T Shirts Pokemon-pikachu Men Tops
                             Tees</span></a>
+                    <div class="_fa7cdd4c68507744" data-zone="d49a39a05ce540afb3f19da178d18385"
+                        style="max-width:300px;width: 70%;height:250px;display: inline-block;margin: 0 auto"></div>
                 </aside>
                 <p>
                     <a class="button" href="/">Go to Start</a>
