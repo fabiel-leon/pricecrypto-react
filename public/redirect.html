@@ -69,20 +69,21 @@
                     document.querySelector("#art-title").innerHTML = title || "Pricecrypto";
                     document.querySelector("#btime").innerHTML = 'Loading article in <span id="time">...</span> segs'
                     try {
-                        var img = document.createElement('img')
-                        img.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=="
-                        img.alt = title
-                        img.style.display = 'block'
-                        img.style.margin = 'auto'
-                        img.style.padding = '20px'
-                        img.onload = function () {
-                            if (img.src != image_url) {
-                                img.src = image_url;
+                        if (image_url) {
+                            var img = document.createElement('img')
+                            img.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=="
+                            img.alt = title
+                            img.style.display = 'block'
+                            img.style.margin = 'auto'
+                            img.style.padding = '20px'
+                            img.onload = function () {
+                                if (img.src != image_url) {
+                                    img.src = image_url;
+                                }
                             }
+                            var theParent = document.querySelector('#parent')
+                            theParent.appendChild(img);
                         }
-                        var theParent = document.querySelector('#parent')
-                        theParent.appendChild(img);
-
                     } catch (error) {
                         console.log('error', error)
                     }
@@ -147,6 +148,13 @@
             cursor: default;
         }
 
+        a.text {
+            color: black;
+            text-decoration: none;
+            font-style: oblique;
+            font-weight: bold;
+        }
+
         p {
             padding: 5px;
         }
@@ -187,15 +195,18 @@
                 <aside>
                     <a href="https://onemboaran.com/afu.php?zoneid=3122339" target="_blank" rel="sponsored"
                         id="parent"></a>
-
-                    <iframe data-aa="1343089" src="//acceptable.a-ads.com/1343089" scrolling="no"
-                        style="border:0px; padding:0; width:100%; height:100%; overflow:hidden"
-                        allowtransparency="true"></iframe>
-                    <a href="https://s.click.aliexpress.com/e/_d7CkSjv" target="_blank" rel="sponsored"><img
-                            src="//ae01.alicdn.com/kf/H31f14409ba6a440da40e87ee44770a84y/NO-COFFEE-NO-WORKEE-T-Shirt-PIKACHU-POKEMON-pika-Tshirt-O-Neck-Short-Funny-Mens-Shirts.jpg_220x220.jpg" /><span
-                            style="display:block;">AliExpress.com Product - NO COFFEE NO WORKEE T Shirt PIKACHU
-                            POKEMON-pika Tshirt O-Neck Short Funny Mens Shirts T Shirts Pokemon-pikachu Men Tops
-                            Tees</span></a>
+                        
+                    <iframe src='http://pricecrypto.surge.sh/ads/bottom.html' frameborder='0' scrolling='no'
+                        style='max-width:300px; max-height:250px; border:0px; width: 100%; height: 100%; padding:0;overflow:hidden'
+                        allowtransparency='true'></iframe>
+                    <a class="text" href="https://s.click.aliexpress.com/e/_d7CkSjv" target="_blank"
+                        rel="sponsored"><img
+                            src="//ae01.alicdn.com/kf/H31f14409ba6a440da40e87ee44770a84y/NO-COFFEE-NO-WORKEE-T-Shirt-PIKACHU-POKEMON-pika-Tshirt-O-Neck-Short-Funny-Mens-Shirts.jpg_220x220.jpg" />
+                        <span style="display:block;text-decoration: solid;"><span
+                                style="background-color:aliceblue">Ofert:</span> <span
+                                style="background-color:yellow"><s>US $12.45</s></span> <span
+                                style="background-color:greenyellow">US $4.06</span> T Shirt Pikachu
+                            Pokemon - Buy it Now Click Here</span></a>
                     <div class="_fa7cdd4c68507744" data-zone="d49a39a05ce540afb3f19da178d18385"
                         style="max-width:300px;width: 70%;height:250px;display: inline-block;margin: 0 auto"></div>
                 </aside>
