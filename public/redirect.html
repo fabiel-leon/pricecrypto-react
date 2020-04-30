@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="theme-color" content="#000000">
     <meta name="maValidation" content="8f309b64bea35ee606105e293d584b61" />
+    <meta name="propeller" content="22280c4cf66af91af3759243bdb8b867">
+    <meta name="coinzilla" content="e42b162217d6c5702c3b4d65f18f9ca8" />
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" type="image/png" href="/fav.png" />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118023615-6"></script>
 
     <!-- Seo friendly -->
     <meta name="robots" content="index, follow" />
@@ -27,14 +28,15 @@
     <link rel="touch-startup-image" href="fav.png" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="mobile-web-app-status-bar-style" content="black" />
-    <!-- <link rel=alternate type="application/rss+xml" title="RSS pricecrypto" href="https://apipromo.cloudno.de/rss.xml" /> -->
     <!-- seo end -->
-    <!-- <script async src="https://mellowads.com/pop.js?ref=7F4D3D190719"></script> -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118023615-6"></script>
+    <script src="//mellowads.com/pop.js?ref=7F4D3D190719"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'UA-118023615-6');
+
         if (window.URLSearchParams) {
             var params = new URLSearchParams(location.search);
             var title = params.get('title');
@@ -49,13 +51,54 @@
 
             window.onload = () => {
             }
+            var loadLink = function () {
+                var lcont = document.querySelector("#link-container")
+                var link = document.createElement('a')
+                link.setAttribute('href', site)
+                link.setAttribute('target', '_blank')
+                link.classList.add('button')
+                link.innerText = 'Click to Read Article'
+                document.querySelector("#btime").remove()
+                lcont.removeChild(lcont.firstChild)
+                lcont.appendChild(link)
+            }
 
             window.document.onreadystatechange = (evt) => {
                 if (document.readyState == "complete") {
-                    document.querySelector("#art-title").innerHTML = title || "Pricecrypto";
-                    document.querySelector("#visit-site").setAttribute('href', site)
                     document.querySelector("#large-frame").setAttribute('src', "https://mellowads.com/view/B4BE53879E4B")
                     document.querySelector("#short-frame").setAttribute('src', "https://mellowads.com/view/60F86D198D3A")
+                    document.querySelector("#art-title").innerHTML = title || "Pricecrypto";
+                    document.querySelector("#btime").innerHTML = 'Loading article in <span id="time">...</span> segs'
+                    try {
+                        if (image_url) {
+                            var img = document.createElement('img')
+                            img.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=="
+                            img.alt = title
+                            img.style.display = 'block'
+                            img.style.margin = 'auto'
+                            img.style.padding = '20px'
+                            img.onload = function () {
+                                if (img.src != image_url) {
+                                    img.src = image_url;
+                                }
+                            }
+                            var theParent = document.querySelector('#parent')
+                            theParent.appendChild(img);
+                        }
+                    } catch (error) {
+                        console.log('error', error)
+                    }
+
+                    var time = 15;
+                    var inter = setInterval(function () {
+                        time--;
+                        document.querySelector("#time").textContent = time
+                        if (time === 0) {
+                            loadLink()
+                            clearInterval(inter)
+                        }
+                    }, 1000)
+                    // fetch('https://pricecrypto.cloudno.de').then(data => data.json()).then(cryptos => this.setState({ cryptos })).catch(err => { });
                 }
             }
         } else {
@@ -88,7 +131,13 @@
             font-size: 17px;
         }
 
-        a {
+        img {
+            max-width: 75%;
+            max-height: 75%;
+        }
+
+        a.button,
+        button {
             text-decoration: none;
             color: tomato;
             font-weight: bold;
@@ -98,6 +147,13 @@
             border-radius: 5px;
             box-shadow: 1px 1px 0px 0px #9c9c9c;
             cursor: default;
+        }
+
+        a.text {
+            color: black;
+            text-decoration: none;
+            font-style: oblique;
+            font-weight: bold;
         }
 
         p {
@@ -133,17 +189,33 @@
     <main>
         <article>
             <div id="crypto-container">
-                <h2 id="art-title"></h2>
-                <p>
-                    <a id="visit-site" target="_blank">Click to Read Article</a>
+                <h1 id="art-title"></h1>
+                <p id="link-container">
+                    <button disabled id="btime">Loading ...</button>
                 </p>
+                <aside>
+                    <a href="https://onemboaran.com/afu.php?zoneid=3122339" target="_blank" rel="sponsored"
+                        id="parent"></a>
+                    <a class="text" href="https://s.click.aliexpress.com/e/_d7CkSjv" target="_blank"
+                        rel="sponsored"><img
+                            src="//ae01.alicdn.com/kf/H31f14409ba6a440da40e87ee44770a84y/NO-COFFEE-NO-WORKEE-T-Shirt-PIKACHU-POKEMON-pika-Tshirt-O-Neck-Short-Funny-Mens-Shirts.jpg_220x220.jpg" />
+                        <span style="display:block;text-decoration: solid;"><span
+                                style="background-color:aliceblue">Ofert:</span> <span
+                                style="background-color:yellow"><s>US $12.45</s></span> <span
+                                style="background-color:greenyellow">US $4.06</span> T Shirt Pikachu
+                            Pokemon - Buy it Now Click Here</span></a>
+                </aside>
                 <p>
-                    <a href="/">Go to Start</a>
+                    <a class="button" href="/">Go to Start</a>
                 </p>
             </div>
             <aside>
                 <div style="text-align: center;">
+                    <!-- <iframe async class="large-frame" id="large-frame" scrolling="no" frameborder="0"
+                        style="overflow:hidden;width:300px;height:250px;"></iframe> -->
                     <iframe async class="large-frame" id="large-frame" scrolling="no" frameborder="0"
+                        style="overflow:hidden;width:970px;height:250px;"></iframe>
+                    <iframe async class="short-frame" id="short-frame" scrolling="no" frameborder="0"
                         style="overflow:hidden;width:300px;height:250px;"></iframe>
                 </div>
             </aside>

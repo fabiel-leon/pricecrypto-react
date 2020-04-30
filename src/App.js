@@ -59,7 +59,7 @@ class App extends Component {
     //     this.setState({ cryptos });
     // }
     fetchData() {
-        fetch('http://pricecrypto.cloudno.de').then(data => data.json()).then(cryptos => this.setState({ cryptos })).catch(err => { });
+        fetch('https://pricecrypto.cloudno.de').then(data => data.json()).then(cryptos => this.setState({ cryptos })).catch(err => { });
     }
 
     redirect() {
